@@ -14,7 +14,7 @@ class TeamClassifier:
         player_crop = frame[y_min:y_max, x_min:x_max]
         tshirt_space = player_crop[:player_crop.shape[0] // 2, :]
         # From Utility
-        kmeans_model = self._initialize_kmeans(tshirt_space)
+        kmeans_model = _initialize_kmeans(tshirt_space)
         pixel_labels = kmeans_model.labels_
         label_matrix = pixel_labels.reshape(tshirt_space.shape[:2])
         # From Utility
