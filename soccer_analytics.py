@@ -11,7 +11,7 @@ st.set_page_config(page_title="Soccer Match Analyzer", layout="centered")
 st.title("⚽ AI Soccer Match Analyzer")
 
 # Path to default sample video
-DEFAULT_VIDEO = "test_video.mp4" 
+DEFAULT_VIDEO = "test_video.mp4"
 
 # Initialize session state for video path
 if "video_path" not in st.session_state:

@@ -9,15 +9,12 @@ from player_current_ball_assign import PlayerCurrentBallAssign
 from view_transform import CoordinateMapping
 from speed_distance_estimator import SpeedAndDistanceEstimator
 
-def main():    
+def main():
     frames = load_video("test_video.mp4")
 
     track_obj = Tracker("best.pt")
     tracks = track_obj.get_object_tracks(frames, read_from_stub=True, stub_path="/stubs/trackers.pkl")
     track_obj.add_position_to_tracks(tracks)
-
-    # Get the image of player for KNN segmetation.
-    # get_crop_player(frames, tracks)
 
     # Camera Movement analyzer
     camera_movement_estimator = CameraShiftAnalyzer(frames[0])
@@ -70,7 +67,7 @@ def main():
     output_video_frames = camera_movement_estimator.visualize_camera_shifts(output_video_frames,camera_movement_per_frame)
     speed_and_distance_estimator.draw_speed_and_distance(output_video_frames,tracks)
 
-    write_video(output_video_frames, "videos/op.avi")
+    write_video(output_video_frames, "videos/op.mp4")
 
 if __name__ == "__main__":
     main()
