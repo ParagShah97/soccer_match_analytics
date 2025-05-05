@@ -7,7 +7,7 @@ class SpeedAndDistanceEstimator():
         self.frame_rate = 24
 
     def add_speed_and_distance_to_tracks(self,tracks):
-        total_distance = {}
+        total_distance = dict()
 
         for entity, paths in tracks.items():
             # Skip this operation for ball and referees, as this is not relevant to them.
@@ -35,7 +35,7 @@ class SpeedAndDistanceEstimator():
                     # Calculate distance and Speed in MPH.
                     distance = measure_distance(start_pos, end_pos)
                     time = (last_frame - frame_num) / self.window_frame
-                    speed_mile_per_hour = (distance / time) * 2.237
+                    speed_mile_per_hour = (distance / time) * 2.237 if time > 0 else 0
 
                     # Update and track distance in global store.
                     if entity not in total_distance:

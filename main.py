@@ -9,7 +9,7 @@ from player_current_ball_assign import PlayerCurrentBallAssign
 from view_transform import CoordinateMapping
 from speed_distance_estimator import SpeedAndDistanceEstimator
 
-def main():
+def main():    
     frames = load_video("test_video.mp4")
 
     track_obj = Tracker("best.pt")
@@ -52,14 +52,6 @@ def main():
             player_info['team'] = assigned_team
             player_info['team_color'] = team_assign.team_palette[assigned_team]
 
-    # for frame_num, player_track in enumerate(tracks['players']):
-    #     for player_id, track in player_track.items():
-    #         team = team_assign.get_player_team(frames[frame_num],
-    #                                              track['bbox'],
-    #                                              player_id)
-    #         tracks['players'][frame_num][player_id]['team'] = team
-    #         tracks['players'][frame_num][player_id]['team_color'] = team_assign.team_colors[team]
-
     # Assign the player who have ball at the moment.
     assigned_player_obj = PlayerCurrentBallAssign()
     team_ball_control= []
@@ -67,7 +59,7 @@ def main():
         ball_bbox = tracks['ball'][frame_num][1]['bbox']
         assigned_player = assigned_player_obj.find_nearest_player_to_ball(player_track, ball_bbox)
 
-        if assigned_player != -1:
+        if assigned_player != None:
             tracks['players'][frame_num][assigned_player]['has_ball'] = True
             team_ball_control.append(tracks['players'][frame_num][assigned_player]['team'])
         else:

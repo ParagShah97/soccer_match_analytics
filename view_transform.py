@@ -9,10 +9,10 @@ class CoordinateMapping():
 
         # Image pixels coordinates of the corner of the trapezoid in the video frame.
         self.pixel_coordinates = np.array([
-            [110, 1035],
-            [265, 275],
-            [910, 260],
-            [1640, 915]
+            [115, 1040],
+            [268, 279],
+            [909, 265],
+            [1637, 912]
         ]).astype(np.float32)
 
         # Mapping of the world coordinates of center of the field.
